@@ -1,12 +1,10 @@
 import Image from 'next/image';
-import MainLayout from '@/components/Layouts/MainLayout';
 
+import Head from 'next/head';
 
 export default function Home() {
   return (
-    <MainLayout seo={{title:"HomePage", description:"HomePage description"}}
-     
-    >
+    <>
       {/* <Image
         src='/vercel.svg'
         alt='Vercel Logo'
@@ -16,7 +14,12 @@ export default function Home() {
         priority
       /> */}
 
-			<h1 className='btn btn--primary'>HomePage</h1>
-    </MainLayout>
+      <Head>
+        <title>{`NBA API - HomePage`}</title>
+        <meta name='description' content='HomePage description' />
+      </Head>
+
+      <h1 className='btn btn--primary'>HomePage</h1>
+    </>
   );
 }

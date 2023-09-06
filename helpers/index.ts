@@ -17,22 +17,19 @@ export const getTheme = (): themeType => {
   return theme;
 };
 
-export const setTheme = (theme: themeType, callback: () => void): themeType => {
+export const setTheme = (theme: themeType): themeType => {
   localStorage.setItem('theme', theme);
   switch (theme) {
     case 'lightTheme':
       document.documentElement.classList.remove('dark');
-      callback();
       return theme;
     case 'darkTheme':
       document.documentElement.classList.add('dark');
-      callback();
       return theme;
     case 'systemTheme':
       window.matchMedia('(prefers-color-scheme: dark)').matches
         ? document.documentElement.classList.add('dark')
         : document.documentElement.classList.remove('dark');
-      callback();
       return theme;
   }
 };

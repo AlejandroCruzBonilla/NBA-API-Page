@@ -1,15 +1,13 @@
+import { themeType } from '@/@types';
 import { createContext } from 'react';
 
 interface ContextProps {
-  sideMenuOpen: boolean;
-  currentTheme: string;
+  isNavMenuOpen: boolean;
+  currentTheme: themeType;
 
   // Methods
-  closeSideMenu: () => void;
-  openSideMenu: () => void;
-  setLightTheme: () => void;
-  setDarkTheme: () => void;
-  setSystemTheme: () => void;
+  setNavMenuOpen: (isNavMenuOpen: boolean) => void;
+  setTheme: (theme: themeType) => void;
 }
 
 export const UIContext = createContext({} as ContextProps);

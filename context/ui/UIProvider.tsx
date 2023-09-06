@@ -1,9 +1,10 @@
 import { FC, ReactElement, useReducer } from 'react';
 import { UIContext, uiReducer } from './';
 import { themeType } from '@/@types';
+import { getTheme, setTheme } from '@/helpers';
 
 export interface UIState {
-  sideMenuOpen: boolean;
+  isNavMenuOpen: boolean;
   currentTheme: themeType;
 }
 
@@ -12,22 +13,19 @@ interface Props {
 }
 
 const UI_INITIAL_STATE: UIState = {
-  sideMenuOpen: false,
-  currentTheme: 'systemTheme',
+  isNavMenuOpen: false,
+  currentTheme:
+    typeof window !== 'undefined' ? setTheme(getTheme()) : 'systemTheme',
 };
 
 export const UIProvider: FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(uiReducer, UI_INITIAL_STATE);
 
-  const openSideMenu = () => dispatch({ type: 'UI - Open Sidebar' });
+  const setNavMenuOpen = (isNavMenuOpen: boolean) =>
+    dispatch({ type: 'UI - Nav Menu', isNavMenuOpen });
 
-  const closeSideMenu = () => dispatch({ type: 'UI - Close Sidebar' });
-
-  const setDarkTheme = () => dispatch({ type: 'UI - Dark Theme' });
-
-  const setLightTheme = () => dispatch({ type: 'UI - Light Theme' });
-
-  const setSystemTheme = () => dispatch({ type: 'UI - System Theme' });
+  const setTheme = (theme: themeType) =>
+    dispatch({ type: 'UI - Theme', theme });
 
   return (
     <UIContext.Provider
@@ -35,11 +33,8 @@ export const UIProvider: FC<Props> = ({ children }) => {
         ...state,
 
         // Methods
-        closeSideMenu,
-        openSideMenu,
-        setLightTheme,
-        setDarkTheme,
-        setSystemTheme,
+        setNavMenuOpen,
+        setTheme,
       }}
     >
       {children}

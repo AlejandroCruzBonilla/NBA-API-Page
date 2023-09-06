@@ -15,10 +15,10 @@
     @apply bg-primary-600 dark:bg-primary-500;
   }
 
-  /* .primary--bg--active {
+  .primary--bg--active {
     @apply hover:bg-primary-500 focus:bg-primary-500 active:bg-primary-500;
     @apply dark:hover:bg-primary-400 dark:focus:bg-primary-400 dark:active:bg-primary-400;
-  } */
+  }
 
   .base--primary {
     @apply bg-base-100 dark:bg-base-900;

@@ -1,11 +1,13 @@
-import MainLayout from '@/components/Layouts/MainLayout';
+import Head from 'next/head';
 
 export default function GamesPage() {
   return (
-    <MainLayout
-      seo={{ title: 'GamesPage', description: 'GamesPage description' }}
-    >
+    <>
+      <Head>
+        <title>{`NBA API - GamesPage`}</title>
+        <meta name='description' content='GamesPage description' />
+      </Head>
       <h1>GamesPage</h1>
-    </MainLayout>
+    </>
   );
 }

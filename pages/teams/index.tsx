@@ -1,11 +1,13 @@
-import MainLayout from '@/components/Layouts/MainLayout';
+import Head from 'next/head';
 
 export default function TeamsPage() {
   return (
-    <MainLayout
-      seo={{ title: 'TeamsPage', description: 'TeamsPage description' }}
-    >
+    <>
+      <Head>
+        <title>{`NBA API - TeamsPage`}</title>
+        <meta name='description' content='TeamsPage description' />
+      </Head>
       <h1>TeamsPage</h1>
-    </MainLayout>
+    </>
   );
 }

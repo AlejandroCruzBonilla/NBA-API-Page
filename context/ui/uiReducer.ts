@@ -1,44 +1,25 @@
+import { setTheme } from '@/helpers';
 import { UIState } from './';
+import { themeType } from '@/@types';
 
 type UIActionType =
-  | { type: 'UI - Open Sidebar' }
-  | { type: 'UI - Close Sidebar' }
-  | { type: 'UI - Dark Theme' }
-  | { type: 'UI - Light Theme' }
-  | { type: 'UI - System Theme' };
+  | { type: 'UI - Nav Menu', isNavMenuOpen: boolean  }
+  | { type: 'UI - Theme'; theme: themeType };
 
 export const uiReducer = (state: UIState, action: UIActionType): UIState => {
   switch (action.type) {
-    case 'UI - Open Sidebar':
+    case 'UI - Nav Menu':
       return {
         ...state,
-        sideMenuOpen: true,
+        isNavMenuOpen: action.isNavMenuOpen,
       };
 
-    case 'UI - Close Sidebar':
-      return {
-        ...state,
-        sideMenuOpen: false,
-      };
-
-    case 'UI - Dark Theme':
+    case 'UI - Theme':
+      setTheme(action.theme);
       return {
         ...state,
         currentTheme: 'darkTheme',
       };
-
-    case 'UI - Light Theme':
-      return {
-        ...state,
-        currentTheme: 'lightTheme',
-      };
-
-    case 'UI - System Theme':
-      return {
-        ...state,
-        currentTheme: 'systemTheme',
-      };
-
     default:
       return state;
   }

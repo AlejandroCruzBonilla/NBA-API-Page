@@ -1,6 +1,6 @@
-import { ChangeEvent } from 'react';
+import { themeType } from '@/@types';
 
-export interface ThemeSwitcherProps {
-  currentTheme: string;
-  toggleTheme: (event: ChangeEvent<HTMLInputElement>) => void
+export interface ThemeSwitchProps {
+  currentTheme: themeType;
+	setTheme: (theme: themeType) => void;
 }

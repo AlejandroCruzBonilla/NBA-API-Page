@@ -1,24 +1,47 @@
-import { Switch } from '@material-tailwind/react';
-import { FC } from 'react';
-import { ThemeSwitcherProps } from './interfaces';
+import { FC, useEffect, useState, useContext } from 'react';
+import { UIContext } from '@/context/ui';
 
-const ThemeSwitch: FC<ThemeSwitcherProps> = ({
-  currentTheme,
-  toggleTheme,
-}) => {
+import { Switch } from '@nextui-org/react';
+import { MoonIcon } from './MoonIcon';
+import { SunIcon } from './SunIcon';
+import { ThemeSwitchProps } from './interfaces';
+
+const ThemeSwitch: FC<ThemeSwitchProps> = ({ setTheme, currentTheme }) => {
+  const [checked, setChecked] = useState(false);
+
+  useEffect(() => {
+    if (checked) {
+      setTheme('darkTheme');
+    } else if (!checked && currentTheme !== 'systemTheme') {
+      setTheme('lightTheme');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checked]);
+
+  useEffect(() => {
+    if (currentTheme === 'darkTheme') {
+      setChecked(true);
+    } else if (
+      currentTheme === 'lightTheme' ||
+      currentTheme === 'systemTheme'
+    ) {
+      setChecked(false);
+    }
+  }, [currentTheme]);
+
   return (
     <Switch
-      id='custom-switch-component'
-      ripple={true}
+      id='theme-switch-component'
       className='h-full w-full checked:bg-primary-600'
-      containerProps={{
-        className: 'w-12 h-7',
+      isSelected={checked}
+      thumbIcon={({ isSelected, className }) => {
+        return isSelected ? (
+          <MoonIcon className={className} />
+        ) : (
+          <SunIcon className={className} />
+        );
       }}
-      circleProps={{
-        className: 'before:hidden left-0.5 border-none',
-      }}
-      onChange={toggleTheme}
-      checked={currentTheme === 'darkTheme'}
+      onValueChange={setChecked}
     />
   );
 };
