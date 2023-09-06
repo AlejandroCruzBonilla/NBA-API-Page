@@ -1,0 +1,17 @@
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center;
+    @apply px-4 py-2;
+    @apply border border-transparent;
+    @apply font-semibold uppercase tracking-widest;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply transition ease-in-out duration-150;
+    /* @apply focus:ring-accent-500; */
+  }
+
+  .btn--primary {
+		@apply font--color;
+		@apply primary--bg;
+		/* @apply primary--bg--active; */
+  }
+}

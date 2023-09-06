@@ -1,0 +1,56 @@
+@layer utilities {
+  .font--color {
+    @apply text-font-950 dark:text-font-100;
+  }
+
+  .primary--font--color {
+    @apply text-primary-600  dark:text-primary-500;
+  }
+
+  .primary--font--color--hover {
+    @apply hover:text-primary-600  dark:hover:text-primary-500;
+  }
+
+  .primary--bg {
+    @apply bg-primary-600 dark:bg-primary-500;
+  }
+
+  /* .primary--bg--active {
+    @apply hover:bg-primary-500 focus:bg-primary-500 active:bg-primary-500;
+    @apply dark:hover:bg-primary-400 dark:focus:bg-primary-400 dark:active:bg-primary-400;
+  } */
+
+  .base--primary {
+    @apply bg-base-100 dark:bg-base-900;
+  }
+  .base--secondary {
+    @apply bg-base-200 dark:bg-base-800;
+  }
+  .base--tertiary {
+    @apply bg-base-300 dark:bg-base-700;
+  }
+
+  .base--primary--active {
+    @apply hover:bg-base-100 dark:hover:bg-base-900;
+  }
+  .base--secondary--active {
+    @apply hover:bg-base-200 dark:hover:bg-base-800;
+  }
+  .base--tertiary--active {
+    @apply hover:bg-backgroun-300 dark:hover:bg-base-700;
+  }
+
+  .base--primary--border {
+    @apply border-2 border-solid border-base-100 dark:border-base-900;
+  }
+  .base--secondary--border {
+    @apply border border-solid 
+		border-base-200
+		dark:border-base-800;
+  }
+  .base--tertiary--border {
+    @apply border border-solid
+		border-base-300
+		dark:border-base-700;
+  }
+}
