@@ -14,6 +14,7 @@ export default function Home() {
         priority
       /> */}
 
+
       <Head>
         <title>{`NBA API - HomePage`}</title>
         <meta name='description' content='HomePage description' />
