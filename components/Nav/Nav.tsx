@@ -1,9 +1,10 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 import { UIContext } from '@/context/ui';
 import NavLink from '../NavLink/NavLink';
 
 import {
-
   Navbar,
   NavbarMenuToggle,
   NavbarBrand,
@@ -13,7 +14,6 @@ import {
 } from '@nextui-org/react';
 
 import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
-import Image from 'next/image';
 
 const items = [
   { to: '/', text: 'Home' },
@@ -22,18 +22,24 @@ const items = [
 ];
 
 const Nav = () => {
-  const { setTheme, currentTheme } = useContext(UIContext);
+  const { isNavMenuOpen, setNavMenuOpen, setTheme, currentTheme } =
+    useContext(UIContext);
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { asPath, pathname } = useRouter();
+
+  useEffect(() => {
+    setNavMenuOpen(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   return (
     <Navbar
       shouldHideOnScroll
       isBordered
-      isMenuOpen={isMenuOpen}
-      onMenuOpenChange={setIsMenuOpen}
+      isMenuOpen={isNavMenuOpen}
+      onMenuOpenChange={setNavMenuOpen}
       maxWidth='xl'
-			isBlurred={false}
+      isBlurred={false}
     >
       <NavbarBrand>
         <Image
@@ -53,6 +59,7 @@ const Nav = () => {
               text={text}
               href={to}
               aria-current='page'
+              asPath={asPath}
             />
           </NavbarItem>
         ))}
@@ -63,18 +70,19 @@ const Nav = () => {
         </NavbarItem>
         <NavbarMenuToggle
           className='nav__menu sm:hidden'
-          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-label={isNavMenuOpen ? 'Close menu' : 'Open menu'}
         />
       </NavbarContent>
 
       <NavbarMenu>
         {items.map(({ to, text }, index) => (
-          <NavbarItem key={`${index}-${to}`} onClick={()=>setIsMenuOpen(false)}>
+          <NavbarItem key={`${index}-${to}`}>
             <NavLink
               className='text-2xl'
               text={text}
               href={to}
               aria-current='page'
+              asPath={asPath}
             />
           </NavbarItem>
         ))}
