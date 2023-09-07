@@ -4,7 +4,7 @@ import { Card, CardBody, CardHeader, Skeleton, Table } from '@nextui-org/react';
 import Image from 'next/image';
 
 const TeamCard: FC<TeamCardProps> = ({ team: { id, logo, name, city } }) => (
-  <Card className='w-80 h-auto' isPressable shadow="sm">
+  <Card className='w-80 h-auto' shadow="sm">
     <CardHeader className='h-40'>
       {logo ? (
         <div className='w-full h-full flex justify-center'>

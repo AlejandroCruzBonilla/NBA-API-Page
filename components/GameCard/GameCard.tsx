@@ -13,14 +13,13 @@ const GameCard: FC<GameCardProps> = ({
   scores,
 }) => (
   <Card className='w-80 h-auto'>
-    <CardHeader className='flex justify-around h-36'>
+    <CardHeader className='flex justify-around'>
       {teams.home.logo ? (
         <Image
           src={teams.home.logo}
           alt={teams.home.name}
           width={80}
-          height={0}
-          className='w-auto h-auto'
+          height={80}
         />
       ) : (
         <Skeleton className='rounded-lg'>
@@ -33,8 +32,7 @@ const GameCard: FC<GameCardProps> = ({
           src={teams.visitors.logo}
           alt={teams.visitors.name}
           width={80}
-          height={0}
-          className='w-auto h-auto'
+          height={80}
         />
       ) : (
         <Skeleton className='rounded-lg'>

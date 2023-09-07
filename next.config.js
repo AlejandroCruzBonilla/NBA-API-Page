@@ -2,10 +2,11 @@
 const nextConfig = {
 	reactStrictMode: true,
 	images: {
-		domains: [
-			'upload.wikimedia.org',
-			'raw.githubusercontent.com/PokeAPI',
-		]
+		unoptimized: true,
+		// domains: [
+		// 	'upload.wikimedia.org',
+		// 	'raw.githubusercontent.com/PokeAPI',
+		// ]
 	}
 }
 

@@ -2,7 +2,6 @@ import { FC } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { NavLinkProps } from './interfaces';
-import styles from './NavLink.module.css';
 
 const NavLink: FC<NavLinkProps> = ({ text, href, className }) => {
   const { asPath } = useRouter();

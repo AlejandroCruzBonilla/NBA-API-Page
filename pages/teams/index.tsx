@@ -1,9 +1,9 @@
 import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import { nbaApi } from '@/api';
 import { TeamsProps } from '@/@types/pages/teams';
 import TeamCard from '@/components/TeamCard/TeamCard';
-import Link from 'next/link';
 
 const TeamsPage: NextPage<TeamsProps> = ({ response }) => {
   return (
@@ -15,9 +15,9 @@ const TeamsPage: NextPage<TeamsProps> = ({ response }) => {
 
       <div className='flex flex-wrap gap-2 justify-center'>
         {response.map(team => (
-					<Link key={team.id} href={`/teams/${team.id}`}>
-          	<TeamCard team={team} />
-					</Link>
+          <Link key={team.id} href='/teams/[id]' as={`/teams/${team.id}`}>
+            <TeamCard team={team} />
+          </Link>
         ))}
       </div>
     </>

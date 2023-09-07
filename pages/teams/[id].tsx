@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import {
   Card,
@@ -22,6 +23,10 @@ import Header1 from '@/components/Headers/Header1';
 const Team: NextPage<TeamProps> = ({ team, players }) => {
   return (
     <>
+      <Head>
+        <title>{`NBA API - ${team.name}`}</title>
+        <meta name='description' content={`${team.name} description`} />
+      </Head>
       <Header1>{team.name}</Header1>
       <Card
         isBlurred
