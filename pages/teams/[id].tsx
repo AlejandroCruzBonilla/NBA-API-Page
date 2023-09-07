@@ -19,8 +19,22 @@ import { PlayersResponse } from '@/@types/pages/players';
 import { TeamsProps } from '@/@types/pages/teams';
 import Image from 'next/image';
 import Header1 from '@/components/Headers/Header1';
+import { useEffect, useState } from 'react';
 
 const Team: NextPage<TeamProps> = ({ team, players }) => {
+  const [image, setImage] = useState(team.logo || '/notFound.jpeg');
+
+  useEffect(() => {
+    const image = document.createElement('img');
+
+    image.onload = () => {
+      if (team.logo) setImage(team.logo);
+    };
+    image.onerror = () => setImage('/notFound.jpeg');
+
+    if (team.logo) image.src = team.logo;
+  });
+
   return (
     <>
       <Head>
@@ -36,19 +50,13 @@ const Team: NextPage<TeamProps> = ({ team, players }) => {
         <CardBody>
           <div className='items-center justify-center grid grid-cols-12 grid-rows-2 lg:grid-rows-1'>
             <div className='col-span-12 lg:col-span-4'>
-              {team.logo ? (
-                <Image
-                  src={team.logo}
-                  alt={team.name}
-                  width={300}
-                  height={0}
-                  className='mx-auto '
-                />
-              ) : (
-                <Skeleton className='rounded-lg'>
-                  <div className='w-80 h-36 rounded-lg bg-default-300'></div>
-                </Skeleton>
-              )}
+              <Image
+                src={image}
+                alt={team.name}
+                width={300}
+                height={0}
+                className='mx-auto '
+              />
             </div>
             <div className='col-span-12 lg:col-span-8 grid grid-cols-1 md:grid-cols-6 leading-8 md:leading-10'>
               <div className='col-span-1 md:col-span-2 md:col-start-2'>

@@ -14,6 +14,7 @@ import {
 } from '@nextui-org/react';
 
 import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
+import Link from 'next/link';
 
 const items = [
   { to: '/', text: 'Home' },
@@ -42,14 +43,16 @@ const Nav = () => {
       isBlurred={false}
     >
       <NavbarBrand>
-        <Image
-          src='/logo.png'
-          alt='logo'
-          width={100}
-          height={0}
-          priority
-          className='h-auto'
-        />
+				<Link href='/'>
+					<Image
+						src='/logo.png'
+						alt='logo'
+						width={100}
+						height={0}
+						priority
+						className='h-auto'
+					/>
+				</Link>
       </NavbarBrand>
       <NavbarContent className='hidden md:flex' justify='center'>
         {items.map(({ to, text }, index) => (
