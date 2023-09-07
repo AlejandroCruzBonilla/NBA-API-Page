@@ -10,22 +10,15 @@ const ThemeSwitch: FC<ThemeSwitchProps> = ({ setTheme, currentTheme }) => {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    if (checked) {
-      setTheme('darkTheme');
-    } else if (!checked && currentTheme !== 'systemTheme') {
-      setTheme('lightTheme');
-    }
+    if (checked) setTheme('darkTheme');
+    else if (!checked && currentTheme != 'systemTheme') setTheme('lightTheme');
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checked]);
 
   useEffect(() => {
     if (currentTheme === 'darkTheme') {
       setChecked(true);
-    } else if (
-      currentTheme === 'lightTheme' ||
-      currentTheme === 'systemTheme'
-    ) {
-      setChecked(false);
     }
   }, [currentTheme]);
 

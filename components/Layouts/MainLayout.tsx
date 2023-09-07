@@ -18,7 +18,7 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
       </Head>
       <Nav />
       <main
-        className={`${styles.main}  flex min-h-screen flex-col items-center justify-between p-4 ${inter.className}`}
+        className={`${styles.main} flex min-h-screen flex-col items-center w-full p-4 ${inter.className}`}
       >
         {children}
       </main>

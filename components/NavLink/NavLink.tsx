@@ -7,7 +7,7 @@ import styles from './NavLink.module.css';
 const NavLink: FC<NavLinkProps> = ({ text, href, className }) => {
   const { asPath } = useRouter();
   return (
-    <Link href={href} legacyBehavior>
+    <Link href={href} legacyBehavior >
       <a
         className={`
 					block w-full text-center

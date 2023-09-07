@@ -18,7 +18,7 @@ export const uiReducer = (state: UIState, action: UIActionType): UIState => {
       setTheme(action.theme);
       return {
         ...state,
-        currentTheme: 'darkTheme',
+        currentTheme: action.theme,
       };
     default:
       return state;
