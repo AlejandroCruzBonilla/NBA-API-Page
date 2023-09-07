@@ -17,12 +17,12 @@ import { TeamProps, TeamResponse } from '@/@types/pages/team';
 import { PlayersResponse } from '@/@types/pages/players';
 import { TeamsProps } from '@/@types/pages/teams';
 import Image from 'next/image';
+import Header1 from '@/components/Headers/Header1';
 
 const Team: NextPage<TeamProps> = ({ team, players }) => {
   return (
     <>
-      <h1>{team.name}</h1>
-
+      <Header1>{team.name}</Header1>
       <Card
         isBlurred
         className='border-none bg-background/60 dark:bg-default-100/50 w-full max-w-screen-xl'

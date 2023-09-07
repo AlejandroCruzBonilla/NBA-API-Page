@@ -45,7 +45,7 @@ const Nav = () => {
           className='h-auto'
         />
       </NavbarBrand>
-      <NavbarContent className='hidden md:flex'>
+      <NavbarContent className='hidden md:flex' justify='center'>
         {items.map(({ to, text }, index) => (
           <NavbarItem key={`${index}-${to}`}>
             <NavLink
